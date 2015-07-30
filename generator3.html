@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator2</title>
+</head>
+<body>
+  <div style="width:320px;">
+    <div style="height:200px;">
+      <p style="color:#29ABE2; font-weight:bold;">秋の日のヴィオロンのためいきのひたぶるに身にしみてうら悲し</p>
+      <p id="out"><span style="color:#999">ここもじがはいるよー</span></p>
+    </div>
+    <button onclick="nextPut()" style="width:100%;">次へ</button>
+  </div>
+  
+  <script>
+    var baseText = "秋の日のヴィオロンのためいきのひたぶるに身にしみてうら悲し";
+    var baseText_Length = baseText.length;
+    var gen = textGenerator();
+    var output = document.getElementById("out");
+    
+    function *textGenerator(){
+      var index = 1;
+      while(true){
+        if(index > baseText_Length) index = 1;
+        yield write(index++);
+      }
+    }
+    
+    function write(index){
+      return baseText.substring(0,index);
+    }
+    
+    function nextPut(){
+     output.innerText = gen.next().value;
+    }
+  </script>
+</body>
+</html>

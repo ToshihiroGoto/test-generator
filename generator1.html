@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator1</title>
+</head>
+<body>
+  <div style="width:320px;">
+    <p id="out"><span style="color:#999">ここ数字がはいるよー</span></p>
+    <button onclick="nextPut()" style="width:100%;">次へ</button>
+  </div>
+  
+  <script>
+    var gen = generator()
+    var output = document.getElementById("out");
+     
+    function *generator(){
+      yield 2;
+      yield 4;
+      yield 6;
+      yield 8;  
+    }
+    
+    function nextPut(){
+      output.innerText = gen.next().value;
+    }
+  </script>
+</body>
+</html>
